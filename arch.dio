@@ -1,0 +1,43 @@
+<mxfile host="65bd71144e">
+    <diagram id="YIxAD0tovSTe_2hf4lku" name="Page-1">
+        <mxGraphModel dx="1068" dy="465" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#b1ddf0;strokeColor=#10739e;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="120" width="520" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="MFE" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="90" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="170" y="130" width="490" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="170" y="400" width="490" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="HEADER - VUE" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="340" y="150" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="FOOTER - VUE" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="360" y="420" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" parent="1" vertex="1">
+                    <mxGeometry x="170" y="200" width="490" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Body -&amp;nbsp; React" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#030303;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="360" y="370" width="130" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="COUNTER - Button" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#030303;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="285" width="130" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="Count&amp;nbsp; - 0" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="150" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="COUNTER - Button" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#030303;" vertex="1" parent="1">
+                    <mxGeometry x="340" y="285" width="130" height="20" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
