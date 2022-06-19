@@ -1,10 +1,11 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-
+const path = require("path");
 const deps = require("./package.json").dependencies;
+
 module.exports = {
     output: {
-        publicPath: "http://localhost:3001/",
+        publicPath: "http://localhost:3003/",
     },
 
     resolve: {
@@ -12,8 +13,15 @@ module.exports = {
     },
 
     devServer: {
-        port: 3001,
+        port: 3003,
         historyApiFallback: true,
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods":
+                "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+            "Access-Control-Allow-Headers":
+                "X-Requested-With, content-type, Authorization",
+        },
     },
 
     module: {
@@ -41,14 +49,12 @@ module.exports = {
 
     plugins: [
         new ModuleFederationPlugin({
-            name: "body",
+            name: "Products",
             filename: "remoteEntry.js",
-            remotes: {
-                footer: "footers@http://localhost:3002/remoteEntry.js",
-                header: "headers@http://localhost:8080/remoteEntry.js",
-                products: "Products@http://localhost:3003/remoteEntry.js",
+            library: { type: "var", name: "Products" },
+            exposes: {
+                "./App": "./src/App",
             },
-            exposes: {},
             shared: {
                 ...deps,
                 react: {
@@ -62,7 +68,9 @@ module.exports = {
             },
         }),
         new HtmlWebPackPlugin({
-            template: "./src/index.html",
+            template: path.resolve("./src/index.html"),
+            filename: "./index.html",
+            chunksSortMode: "none",
         }),
     ],
 };

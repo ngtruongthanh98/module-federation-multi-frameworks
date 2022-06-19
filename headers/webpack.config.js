@@ -8,91 +8,98 @@ const prod = mode === "production";
 
 const deps = require("./package.json").dependencies;
 module.exports = {
-  output: {
-    publicPath: "http://localhost:8080/",
-  },
-
-  resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
-  },
-
-  resolve: {
-    alias: {
-      svelte: path.resolve("node_modules", "svelte"),
+    output: {
+        publicPath: "http://localhost:8080/",
     },
-    extensions: [".mjs", ".js", ".ts", ".svelte"],
-    mainFields: ["svelte", "browser", "module", "main"],
-  },
 
-  devServer: {
-    port: 8080,
-    historyApiFallback: true,
-  },
+    resolve: {
+        extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+    },
 
-  module: {
-    rules: [
-      {
-        test: /\.svelte$/,
-        use: {
-          loader: "svelte-loader",
-          options: {
-            emitCss: true,
-            hotReload: false,
-          },
+    resolve: {
+        alias: {
+            svelte: path.resolve("node_modules", "svelte"),
         },
-      },
-      {
-        test: /\.(m?js|ts)/,
-        type: "javascript/auto",
-        resolve: {
-          fullySpecified: false,
+        extensions: [".mjs", ".js", ".ts", ".svelte"],
+        mainFields: ["svelte", "browser", "module", "main"],
+    },
+
+    devServer: {
+        port: 8080,
+        historyApiFallback: true,
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods":
+                "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+            "Access-Control-Allow-Headers":
+                "X-Requested-With, content-type, Authorization",
         },
-      },
-      {
-        test: /\.(css|s[ac]ss)$/i,
-        use: ["style-loader", "css-loader", "postcss-loader"],
-      },
-      {
-        test: /\.css$/,
-        use: [
-          prod ? MiniCssExtractPlugin.loader : "style-loader",
-          "css-loader",
+    },
+
+    module: {
+        rules: [
+            {
+                test: /\.svelte$/,
+                use: {
+                    loader: "svelte-loader",
+                    options: {
+                        emitCss: true,
+                        hotReload: false,
+                    },
+                },
+            },
+            {
+                test: /\.(m?js|ts)/,
+                type: "javascript/auto",
+                resolve: {
+                    fullySpecified: false,
+                },
+            },
+            {
+                test: /\.(css|s[ac]ss)$/i,
+                use: ["style-loader", "css-loader", "postcss-loader"],
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    prod ? MiniCssExtractPlugin.loader : "style-loader",
+                    "css-loader",
+                ],
+            },
+            {
+                test: /\.(ts|tsx|js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                },
+            },
         ],
-      },
-      {
-        test: /\.(ts|tsx|js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
-      },
+    },
+
+    mode,
+
+    plugins: [
+        new ModuleFederationPlugin({
+            name: "headers",
+            filename: "remoteEntry.js",
+            remotes: {},
+            exposes: {
+                "./Header": "./src/Header.svelte",
+            },
+            shared: {
+                ...deps,
+                "solid-js": {
+                    singleton: true,
+                    requiredVersion: deps["solid-js"],
+                },
+            },
+        }),
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+        }),
+        new HtmlWebPackPlugin({
+            template: "./src/index.html",
+        }),
     ],
-  },
-
-  mode,
-
-  plugins: [
-    new ModuleFederationPlugin({
-      name: "headers",
-      filename: "remoteEntry.js",
-      remotes: {},
-      exposes: { 
-        "./Header": "./src/Header.svelte",
-      },
-      shared: {
-        ...deps,
-        "solid-js": {
-          singleton: true,
-          requiredVersion: deps["solid-js"],
-        },
-      },
-    }),
-    new MiniCssExtractPlugin({
-      filename: "[name].css",
-    }),
-    new HtmlWebPackPlugin({
-      template: "./src/index.html",
-    }),
-  ],
-  devtool: prod ? false : "source-map",
+    devtool: prod ? false : "source-map",
 };

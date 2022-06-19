@@ -2,6 +2,8 @@
 body/node_modules/
 footer/node_modules/
 headers/node_modules/
+container/node_modules/
+product/node_modules/
 /dist/
 
 # local env files
