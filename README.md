@@ -1,6 +1,6 @@
 # MicroFrontendTutorial
-Application developed using React, vue and svelte programming languages and Webpack 5's new Module Federation
 
+Application developed using React, vue and svelte programming languages and Webpack 5's new Module Federation
 
 ## Installation
 
@@ -11,11 +11,19 @@ cd headers
 npm install
 npm start
 ```
+
 ```sh
 cd body
 npm install
 npm start
 ```
+
+```sh
+cd products
+npm install
+npm start
+```
+
 ```sh
 cd footer
 npm install
@@ -24,13 +32,12 @@ npm start
 
 ## Tech
 
-| Prog. Lang. | PORT |
-| ------ | ------ |
-| REACTJS | :3002 |
-| VUEJS | :3001 |
-| SVELTEJS | :8080|
+| Prog. Lang. | PORT        |
+| ----------- | ----------- |
+| REACTJS     | :3002 :3003 |
+| VUEJS       | :3001       |
+| SVELTEJS    | :8080       |
 
 ## License
 
 MIT
-
