@@ -10,12 +10,12 @@ const RelatedProducts = React.lazy(() => import("products/App"));
 
 import "./index.scss";
 
-window.headers.get("./Header").then((data) => {
-    const Header = data().default;
-    new Header({
-        target: document.getElementById("header"),
-    });
-});
+// window.headers.get("./Header").then((data) => {
+//     const Header = data().default;
+//     new Header({
+//         target: document.getElementById("header"),
+//     });
+// });
 
 mountFooter("#footer");
 
