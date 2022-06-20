@@ -3,9 +3,12 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const path = require("path");
 const deps = require("./package.json").dependencies;
 
-module.exports = {
+module.exports = (_, argv) => ({
     output: {
-        publicPath: "http://localhost:3003/",
+        publicPath:
+            argv.mode === "development"
+                ? "http://localhost:3003/"
+                : "https://luca-webpack-mfe-products.surge.sh/",
     },
 
     resolve: {
@@ -73,4 +76,4 @@ module.exports = {
             chunksSortMode: "none",
         }),
     ],
-};
+});
