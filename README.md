@@ -41,12 +41,14 @@ npm start
 ---
 
 Deployment:
-| Page | Link |
-| ----------- | ------------------------------------------- |
-| body | https://luca-webpack-mfe-body.surge.sh/ |
+I use Surge.sh to deploy the applications.
+
+| Page     | Link                                        |
+| -------- | ------------------------------------------- |
+| body     | https://luca-webpack-mfe-body.surge.sh/     |
 | products | https://luca-webpack-mfe-products.surge.sh/ |
-| header | https://luca-webpack-mfe-header.surge.sh/ |
-| footer | https://luca-webpack-mfe-footer.surge.sh/ |
+| header   | https://luca-webpack-mfe-header.surge.sh/   |
+| footer   | https://luca-webpack-mfe-footer.surge.sh/   |
 
 ## License
 
