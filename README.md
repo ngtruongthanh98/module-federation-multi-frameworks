@@ -3,6 +3,10 @@
 Application developed using React, vue and svelte programming languages and Webpack 5's new Module Federation.
 In this project, I use tailwindcss to style components.
 
+### Final Result
+
+![Final App](./documents/photos/final-app.png "Final App")
+
 Easily, put these code into the head tag in html file of each micro app:
 
 ```
@@ -393,10 +397,6 @@ In index.html file:
         <div id="footer"></div>
     </body>
 ```
-
-### Final Result
-
-![Final App](./documents/photos/final-app.png "Final App")
 
 ## Installation
 
