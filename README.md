@@ -30,13 +30,20 @@ npm install
 npm start
 ```
 
+```sh
+cd common
+npm install
+npm start
+
+```
+
 ## Tech
 
-| Prog. Lang. | PORT        |
-| ----------- | ----------- |
-| REACTJS     | :3002 :3003 |
-| VUEJS       | :3001       |
-| SVELTEJS    | :8080       |
+| Prog. Lang. | PORT              |
+| ----------- | ----------------- |
+| REACTJS     | :3002 :3003 :3004 |
+| VUEJS       | :3001             |
+| SVELTEJS    | :8080             |
 
 ---
 
@@ -49,6 +56,7 @@ I use Surge.sh to deploy the applications.
 | products | https://luca-webpack-mfe-products.surge.sh/ |
 | header   | https://luca-webpack-mfe-header.surge.sh/   |
 | footer   | https://luca-webpack-mfe-footer.surge.sh/   |
+| common   | https://luca-webpack-mfe-common.surge.sh/   |
 
 ## License
 
