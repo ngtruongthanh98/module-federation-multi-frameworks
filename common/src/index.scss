@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 .content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

@@ -8,6 +8,9 @@ import { store } from "./store";
 import mountFooter from "footer/mountFooter";
 const RelatedProducts = React.lazy(() => import("products/App"));
 
+const ReactButton = React.lazy(() => import("common/ReactButton"));
+const AmountItem = React.lazy(() => import("common/AmountItem"));
+
 import "./index.scss";
 
 // window.headers.get("./Header").then((data) => {
@@ -60,7 +63,7 @@ const Products = () => {
             <div className="flex flex-col w-full p-5">
                 <div className="flex flex-row w-full justify-between">
                     <h1 className="text-lg font-bold">The Model Store</h1>
-                    <div>Orders: 0 items</div>
+                    <AmountItem />
                 </div>
                 <div className="flex flex-row">
                     <div className="w-2/3">
@@ -90,9 +93,8 @@ const Products = () => {
                                 />
                             </li>
                         </ul>
-                        <button className="font-medium hover:bg-gray-50 border border-gray-300 rounded p-3 mt-10">
-                            Buy for 66,00 $
-                        </button>
+
+                        <ReactButton />
                     </div>
                 </div>
             </div>
