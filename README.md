@@ -433,6 +433,8 @@ npm start
 
 ```
 
+## Or just run `npm start` to run all the apps
+
 ## Tech
 
 | Prog. Lang. | PORT              |
