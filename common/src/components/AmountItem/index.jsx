@@ -1,7 +1,8 @@
 import React from "react";
+import "./styles.scss";
 
-const AmountItem = () => {
-    return <div>Orders: 0 items</div>;
+const AmountItem = (props) => {
+  return <div className="cart">Orders: {props.childElement} items</div>;
 };
 
 export default AmountItem;

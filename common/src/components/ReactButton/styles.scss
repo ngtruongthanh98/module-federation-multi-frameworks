@@ -1,0 +1,16 @@
+.btn-buy {
+  margin: 50px auto 20px auto;
+  padding: 15px 25px;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #4f4f4f;
+  border-radius: 6px;
+  transition: 0.4s;
+}
+
+.btn-buy:hover {
+  background-color: green;
+  color: #fff;
+  font-weight: bold;
+}
