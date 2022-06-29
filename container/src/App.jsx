@@ -38,8 +38,6 @@ const Products = () => {
   var i = 0;
 
   const onHandleAddToCart = () => {
-    console.log("hello");
-
     i++;
     document.getElementById("inc").innerHTML = i;
   };
@@ -74,7 +72,13 @@ const Products = () => {
       <div className="flex flex-col w-full p-5">
         <div className="flex flex-row w-full justify-between">
           <h1 className="text-lg font-bold">The Model Store</h1>
-          <AmountItem childElement={<span id="inc">0</span>} />
+
+          <div className="border-dashed border-2 border-blue-300 p-2">
+            <div className="-top-7 text-blue-500 font-bold">
+              Team Payment (payment)
+            </div>
+            <AmountItem childElement={<span id="inc">0</span>} />
+          </div>
         </div>
         <div className="flex flex-row">
           <div className="w-2/3">
@@ -103,7 +107,12 @@ const Products = () => {
               </li>
             </ul>
 
-            <ReactButton onClick={onHandleAddToCart} />
+            <div className="border-dashed border-2 border-blue-300 p-2">
+              <div className="-top-7 text-blue-500 font-bold">
+                Team Payment (payment)
+              </div>
+              <ReactButton onClick={onHandleAddToCart} />
+            </div>
           </div>
         </div>
       </div>
