@@ -8,8 +8,8 @@ import { store } from "./store";
 // import mountFooter from "footer/mountFooter";
 const RelatedProducts = React.lazy(() => import("products/App"));
 
-const ReactButton = React.lazy(() => import("common/ReactButton"));
-const AmountItem = React.lazy(() => import("common/AmountItem"));
+const ReactButton = React.lazy(() => import("payment/ReactButton"));
+const AmountItem = React.lazy(() => import("payment/AmountItem"));
 
 import "./index.scss";
 

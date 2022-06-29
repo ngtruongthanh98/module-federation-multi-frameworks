@@ -4,8 +4,7 @@
   "workspaces": {
     "packages": [
       "body",
-      "common",
-      "footer",
+      "payment",
       "products"
     ]
   },

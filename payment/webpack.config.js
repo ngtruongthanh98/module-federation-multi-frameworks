@@ -1,14 +1,14 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-
+const path = require("path");
 const deps = require("./package.json").dependencies;
 
 module.exports = (_, argv) => ({
   output: {
     publicPath:
       argv.mode === "development"
-        ? "http://localhost:3001/"
-        : "https://luca-webpack-mfe-body.surge.sh/",
+        ? "http://localhost:3004/"
+        : "https://luca-webpack-mfe-payment.surge.sh/",
   },
 
   resolve: {
@@ -16,7 +16,7 @@ module.exports = (_, argv) => ({
   },
 
   devServer: {
-    port: 3001,
+    port: 3004,
     historyApiFallback: true,
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -51,34 +51,13 @@ module.exports = (_, argv) => ({
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "body",
+      name: "Payment",
       filename: "remoteEntry.js",
-      remotes: {
-        footer:
-          argv.mode === "development"
-            ? "footers@http://localhost:3002/remoteEntry.js"
-            : "footers@https://luca-webpack-mfe-footer.surge.sh/remoteEntry.js",
-        // header:
-        //     argv.mode === "development"
-        //         ? "headers@http://localhost:8080/remoteEntry.js"
-        //         : "headers@https://luca-webpack-mfe-header.surge.sh/remoteEntry.js",
-        products:
-          argv.mode === "development"
-            ? "Products@http://localhost:3003/remoteEntry.js"
-            : "Products@https://luca-webpack-mfe-products.surge.sh/remoteEntry.js",
-        payment:
-          argv.mode === "development"
-            ? "Payment@http://localhost:3004/remoteEntry.js"
-            : "Payment@https://luca-webpack-mfe-payment.surge.sh/remoteEntry.js",
+      library: { type: "var", name: "Payment" },
+      exposes: {
+        "./ReactButton": "./src/components/ReactButton/index.jsx",
+        "./AmountItem": "./src/components/AmountItem/index.jsx",
       },
-      // remotes: {
-      //     footer: "footers@https://luca-webpack-mfe-footer.surge.sh/remoteEntry.js",
-      //     // header: "headers@https://luca-webpack-mfe-header.surge.sh/remoteEntry.js",
-      //     products:
-      //         "Products@https://luca-webpack-mfe-products.surge.sh/remoteEntry.js",
-      //     payment: "Payment@https://luca-webpack-mfe-payment.surge.sh/remoteEntry.js",
-      // },
-      exposes: {},
       shared: {
         ...deps,
         react: {
@@ -92,7 +71,9 @@ module.exports = (_, argv) => ({
       },
     }),
     new HtmlWebPackPlugin({
-      template: "./src/index.html",
+      template: path.resolve("./src/index.html"),
+      filename: "./index.html",
+      chunksSortMode: "none",
     }),
   ],
 });

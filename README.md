@@ -17,10 +17,10 @@ To create micro frontend applications using Webpack Module Federation, you can f
 
 ###1. I begin to build Footer application by VueJS:
 
--   Install following packages:
-    ![App.vue](./documents/photos/App.vue.png "App.vue")
+- Install following packages:
+  ![App.vue](./documents/photos/App.vue.png "App.vue")
 
--   In /src, create Footer.vue component
+- In /src, create Footer.vue component
 
 ```
 <template>
@@ -28,7 +28,7 @@ To create micro frontend applications using Webpack Module Federation, you can f
 </template>
 ```
 
--   Create App.vue and import the Footer.vue into the file:
+- Create App.vue and import the Footer.vue into the file:
 
 ```
 <template>
@@ -47,7 +47,7 @@ export default {
 </script>
 ```
 
--   Create file bootloader.js
+- Create file bootloader.js
 
 ```
 import { createApp } from "vue";
@@ -66,14 +66,14 @@ import App from "./App.vue";
 createApp(App).mount("#app");
 ```
 
--   Create index.js:
+- Create index.js:
 
 ```
 import("./bootstrap.js");
 
 ```
 
--   We create mountFooter.js to use Vue Footer component in the future:
+- We create mountFooter.js to use Vue Footer component in the future:
 
 ```
 import { createApp } from "vue";
@@ -86,7 +86,7 @@ export default (selector) => {
 
 ```
 
--   In the next step, we need to config webpack in webpack.config.js:
+- In the next step, we need to config webpack in webpack.config.js:
 
 ```
 const HtmlWebPackPlugin = require("html-webpack-plugin");
@@ -163,7 +163,7 @@ module.exports = (_, argv) => ({
 
 ```
 
--   In this file, we need to notice the port in localhost, for this Footer component, I set to PORT 3002.
+- In this file, we need to notice the port in localhost, for this Footer component, I set to PORT 3002.
 
 ![Footer Webpack](./documents/photos/Footer-webpack-config.png "Footer Webpack Config")
 
@@ -188,7 +188,7 @@ exposes: {
 },
 ```
 
--   Try to run this Footer app by the command:
+- Try to run this Footer app by the command:
 
 ```
 npm start
@@ -198,10 +198,10 @@ npm start
 
 ###2. Create micro app "body", this app is the container contains our other micro frontends.
 
--   Install following packages:
-    ![packages.json](./documents/photos/body%20packages.png "packages.json")
+- Install following packages:
+  ![packages.json](./documents/photos/body%20packages.png "packages.json")
 
--   Similar to Vue app, we mount id #app in bootstrap.js:
+- Similar to Vue app, we mount id #app in bootstrap.js:
 
 ```
 import React from "react";
@@ -211,7 +211,7 @@ import App from "./App";
 ReactDOM.render(<App />, document.getElementById("app"));
 ```
 
--   Import bootstrap.js file in to index.js:
+- Import bootstrap.js file in to index.js:
 
 ```
 import("./bootstrap");
@@ -220,7 +220,7 @@ import("./bootstrap");
 
 **Important**
 
--   In index.html, we must have meta tag:
+- In index.html, we must have meta tag:
 
 ```
         <meta
@@ -231,7 +231,7 @@ import("./bootstrap");
 
 This way helps our app can run in the production environment. Read more: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/upgrade-insecure-requests
 
--   Next step, we need to configure webpack.config.js
+- Next step, we need to configure webpack.config.js
 
 ```
 const HtmlWebPackPlugin = require("html-webpack-plugin");
@@ -303,17 +303,17 @@ module.exports = (_, argv) => ({
             //         argv.mode === "development"
             //             ? "Products@http://localhost:3003/remoteEntry.js"
             //             : "Products@https://luca-webpack-mfe-products.surge.sh/remoteEntry.js",
-            //     common:
+            //     payment:
             //         argv.mode === "development"
-            //             ? "Common@http://localhost:3004/remoteEntry.js"
-            //             : "Common@https://luca-webpack-mfe-common.surge.sh/remoteEntry.js",
+            //             ? "Payment@http://localhost:3004/remoteEntry.js"
+            //             : "Payment@https://luca-webpack-mfe-payment.surge.sh/remoteEntry.js",
             // },
             remotes: {
                 footer: "footers@https://luca-webpack-mfe-footer.surge.sh/remoteEntry.js",
                 // header: "headers@https://luca-webpack-mfe-header.surge.sh/remoteEntry.js",
                 products:
                     "Products@https://luca-webpack-mfe-products.surge.sh/remoteEntry.js",
-                common: "Common@https://luca-webpack-mfe-common.surge.sh/remoteEntry.js",
+                payment: "Payment@https://luca-webpack-mfe-payment.surge.sh/remoteEntry.js",
             },
             exposes: {},
             shared: {
@@ -336,8 +336,8 @@ module.exports = (_, argv) => ({
 
 ```
 
--   The main app in PORT 3001
-    I named this micro frontend app: body. You can see in the line:
+- The main app in PORT 3001
+  I named this micro frontend app: body. You can see in the line:
 
 ```
 name: "body",
@@ -357,18 +357,18 @@ To use micro app in body, set remotes line:
                 // header: "headers@https://luca-webpack-mfe-header.surge.sh/remoteEntry.js",
                 products:
                     "Products@https://luca-webpack-mfe-products.surge.sh/remoteEntry.js",
-                common: "Common@https://luca-webpack-mfe-common.surge.sh/remoteEntry.js",
+                payment: "Payment@https://luca-webpack-mfe-payment.surge.sh/remoteEntry.js",
             },
 ```
 
--   In App.jsx:
+- In App.jsx:
 
 ```
 import mountFooter from "footer/mountFooter";
 const RelatedProducts = React.lazy(() => import("products/App"));
 
-const ReactButton = React.lazy(() => import("common/ReactButton"));
-const AmountItem = React.lazy(() => import("common/AmountItem"));
+const ReactButton = React.lazy(() => import("payment/ReactButton"));
+const AmountItem = React.lazy(() => import("payment/AmountItem"));
 ```
 
 After importing components, we can use them in body micro-app
@@ -427,7 +427,7 @@ npm start
 ```
 
 ```sh
-cd common
+cd payment
 npm install
 npm start
 
@@ -454,7 +454,7 @@ I use Surge.sh to deploy the applications.
 | products | https://luca-webpack-mfe-products.surge.sh/ |
 | header   | https://luca-webpack-mfe-header.surge.sh/   |
 | footer   | https://luca-webpack-mfe-footer.surge.sh/   |
-| common   | https://luca-webpack-mfe-common.surge.sh/   |
+| payment  | https://luca-webpack-mfe-payment.surge.sh/  |
 
 ## License
 
