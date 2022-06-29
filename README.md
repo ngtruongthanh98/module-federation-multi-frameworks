@@ -196,7 +196,7 @@ npm start
 
 ![Footer](./documents/photos/Footer.png "Footer")
 
-###2. Create micro app "body", this app is the container contains our other micro frontends.
+###2. Create micro app "container", this app is the container contains our other micro frontends.
 
 - Install following packages:
   ![packages.json](./documents/photos/body%20packages.png "packages.json")
@@ -244,7 +244,7 @@ module.exports = (_, argv) => ({
         publicPath:
             argv.mode === "development"
                 ? "http://localhost:3001/"
-                : "https://luca-webpack-mfe-body.surge.sh/",
+                : "https://luca-webpack-mfe-container.surge.sh/",
     },
 
     resolve: {
@@ -288,7 +288,7 @@ module.exports = (_, argv) => ({
 
     plugins: [
         new ModuleFederationPlugin({
-            name: "body",
+            name: "container",
             filename: "remoteEntry.js",
             // remotes: {
             //     footer:
@@ -337,10 +337,10 @@ module.exports = (_, argv) => ({
 ```
 
 - The main app in PORT 3001
-  I named this micro frontend app: body. You can see in the line:
+  I named this micro frontend app: container. You can see in the line:
 
 ```
-name: "body",
+name: "container",
 ```
 
 We need to set a name for the chunk file:
@@ -349,7 +349,7 @@ We need to set a name for the chunk file:
 filename: "remoteEntry.js"
 ```
 
-To use micro app in body, set remotes line:
+To use micro app in container, set remotes line:
 
 ```
             remotes: {
@@ -371,7 +371,7 @@ const ReactButton = React.lazy(() => import("payment/ReactButton"));
 const AmountItem = React.lazy(() => import("payment/AmountItem"));
 ```
 
-After importing components, we can use them in body micro-app
+After importing components, we can use them in container micro-app
 
 ### Noted:
 
@@ -409,7 +409,7 @@ npm start
 ```
 
 ```sh
-cd body
+cd container
 npm install
 npm start
 ```
@@ -448,13 +448,13 @@ npm start
 Deployment:
 I use Surge.sh to deploy the applications.
 
-| Page     | Link                                        |
-| -------- | ------------------------------------------- |
-| body     | https://luca-webpack-mfe-body.surge.sh/     |
-| products | https://luca-webpack-mfe-products.surge.sh/ |
-| header   | https://luca-webpack-mfe-header.surge.sh/   |
-| footer   | https://luca-webpack-mfe-footer.surge.sh/   |
-| payment  | https://luca-webpack-mfe-payment.surge.sh/  |
+| Page      | Link                                         |
+| --------- | -------------------------------------------- |
+| container | https://luca-webpack-mfe-container.surge.sh/ |
+| products  | https://luca-webpack-mfe-products.surge.sh/  |
+| header    | https://luca-webpack-mfe-header.surge.sh/    |
+| footer    | https://luca-webpack-mfe-footer.surge.sh/    |
+| payment   | https://luca-webpack-mfe-payment.surge.sh/   |
 
 ## License
 
