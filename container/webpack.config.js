@@ -8,7 +8,7 @@ module.exports = (_, argv) => ({
     publicPath:
       argv.mode === "development"
         ? "http://localhost:3001/"
-        : "https://luca-webpack-mfe-body.surge.sh/",
+        : "https://luca-webpack-mfe-container.surge.sh/",
   },
 
   resolve: {
@@ -51,7 +51,7 @@ module.exports = (_, argv) => ({
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "body",
+      name: "container",
       filename: "remoteEntry.js",
       remotes: {
         footer:
