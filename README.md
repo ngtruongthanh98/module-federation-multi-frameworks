@@ -433,7 +433,22 @@ npm start
 
 ```
 
-## Or just run `npm start` to run all the apps
+Easier, you can run the following command
+Because we use file start.sh to start project, so we must grant permission to this file:
+
+```
+sudo chmod +x start.sh
+```
+
+Then enter your PC password
+
+Run
+
+```
+./start.sh
+```
+
+to run the applications
 
 ## Tech
 
