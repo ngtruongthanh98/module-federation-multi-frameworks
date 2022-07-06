@@ -1,9 +1,5 @@
 import React from "react";
-// import ReactDOM from "react-dom";
-import {
-  Provider,
-  useSelector,
-} from "../../products/node_modules/react-redux/es";
+import { Provider, useSelector } from "react-redux";
 import { store } from "./store";
 // import mountFooter from "footer/mountFooter";
 const RelatedProducts = React.lazy(() => import("products/App"));
