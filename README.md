@@ -433,8 +433,7 @@ npm start
 
 ```
 
-Easier, you can run the following command
-Because we use file start.sh to start project, so we must grant permission to this file:
+At the first time run the project, you can run the following commands. Because we use file start.sh to start project, so we must grant permission to this file:
 
 ```
 sudo chmod +x start.sh
@@ -448,7 +447,11 @@ Run
 ./start.sh
 ```
 
-to run the applications
+To run the applications, use the following command:
+
+```
+npm run start
+```
 
 ## Tech
 
